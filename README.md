@@ -11,3 +11,6 @@ Run `npm install`  or `yarn`
 ## And then run dev serve for client
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+
+![alt text](https://github.com/AleSkywaker/Marvel-Mat-table/blob/main/image.jpg?raw=true)

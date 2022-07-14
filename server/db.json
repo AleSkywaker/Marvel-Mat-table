@@ -479,6 +479,16 @@
       "occupationLabel": "sailor",
       "memberOfLabel": "Canadian Army",
       "creatorLabel": "Len Wein"
+    },
+    {
+      "citizenshipLabel": "Brazil",
+      "creatorLabel": "Alex",
+      "memberOfLabel": "Colony",
+      "nameLabel": "Sky",
+      "occupationLabel": "Pilot",
+      "skillsLabel": "Magic",
+      "genderLabel": "male",
+      "id": 49
     }
   ]
 }
