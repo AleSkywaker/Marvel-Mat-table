@@ -1,0 +1,74 @@
+<section class="form-section">
+  <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" class="signUp_form" #form="ngForm"
+    (ngSubmit)="onSubmit(form)">
+    <mat-form-field appearance="outline">
+      <mat-label>Nationality</mat-label>
+      <input type="text" matInput placeholder="Nationality" ngModel name="citizenshipLabel" required #nationalityInput="ngModel">
+      <mat-hint>Enter a hero´s nationality</mat-hint>
+      <mat-error *ngIf="nationalityInput.invalid && nationalityInput.touched">
+        <span *ngIf="nationalityInput.hasError('required')">Nationality is required</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Creator</mat-label>
+      <input type="text" matInput placeholder="Enter the creator" ngModel name="creatorLabel" required
+        #creatorInput="ngModel">
+      <mat-hint align="end">{{creatorInput.value?.length || 0}}/ 6</mat-hint>
+      <mat-error *ngIf="creatorInput.invalid && creatorInput.touched">
+        <span *ngIf="creatorInput.hasError('required')">Creator is required</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Member</mat-label>
+      <input type="text" matInput placeholder="Enter a Member of" ngModel name="memberOfLabel" required
+        #memberInput="ngModel">
+      <mat-hint align="end">Enter a member of</mat-hint>
+      <mat-error *ngIf="memberInput.invalid && memberInput.touched">
+        <span *ngIf="memberInput.hasError('required')">Member is required</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input type="text" matInput placeholder="Enter a hero`s name" ngModel name="nameLabel" required
+        #nameInput="ngModel">
+      <mat-hint align="end">Enter a hero`s name</mat-hint>
+      <mat-error *ngIf="nameInput.invalid && nameInput.touched">
+        <span *ngIf="nameInput.hasError('required')">Name is required</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Occupation</mat-label>
+      <input type="text" matInput placeholder="Enter a hero`s occupation" ngModel name="occupationLabel" required
+        #occupationInput="ngModel">
+      <mat-hint align="end">Enter a hero`s occupation</mat-hint>
+      <mat-error *ngIf="occupationInput.invalid && occupationInput.touched">
+        <span *ngIf="occupationInput.hasError('required')">Occupation is required</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Skills</mat-label>
+      <input type="text" matInput placeholder="Enter a hero`s skills" ngModel name="skillsLabel" required
+        #skillsInput="ngModel">
+      <mat-hint align="end">Enter a hero`s skills</mat-hint>
+      <mat-error *ngIf="skillsInput.invalid && skillsInput.touched">
+        <span *ngIf="skillsInput.hasError('required')">Skills is required</span>
+      </mat-error>
+    </mat-form-field>
+    <label id="example-radio-group-label">Gender</label>
+    <mat-radio-group aria-label="Select an option" ngModel name="genderLabel" required>
+      <mat-radio-button value="male">Male</mat-radio-button>
+      <mat-radio-button value="female">Female</mat-radio-button>
+    </mat-radio-group>
+
+
+    <button type="submit" mat-raised-button color="warn" gdGap="60px" [disabled]="form.invalid">Submit</button>
+  </form>
+</section>
+
+
+

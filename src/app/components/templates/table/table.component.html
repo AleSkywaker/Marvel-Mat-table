@@ -1,0 +1,96 @@
+<app-custom-button></app-custom-button>
+
+<mat-form-field appearance="standard">
+  <mat-label>Filter</mat-label>
+
+  <mat-chip-list #chipList aria-label="Hero selection">
+    <mat-chip *ngFor="let hero of heroes" (removed)="remove(hero)">
+      {{hero.name}}
+      <button matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+      <input
+      placeholder="Find a hero..."
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      [matChipInputAddOnBlur]="addOnBlur"
+      (matChipInputTokenEnd)="add($event)"
+      #input>
+    </mat-chip-list>
+</mat-form-field>
+<!-- matSortStart="desc" matSortDirection="desc" -->
+<div class="mat-elevation-z8 data_table">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Member Column -->
+    <ng-container matColumnDef="memberOfLabel">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        <app-bar-chart-member [dataMember]="dataHeroes | transformData:'memberOfLabel' " title="Member"></app-bar-chart-member>
+      </th>
+      <td mat-cell *matCellDef="let row"> {{row.memberOfLabel}} </td>
+    </ng-container>
+
+    <!-- Nationality Column -->
+    <ng-container matColumnDef="citizenshipLabel">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+         <app-bar-chart [data]="dataHeroes | transformData:'skillsLabel' " title='Nationality'></app-bar-chart>
+        </th>
+      <td mat-cell *matCellDef="let row"> {{row.citizenshipLabel}}</td>
+    </ng-container>
+
+    <!-- Creator Column -->
+    <ng-container matColumnDef="creatorLabel">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        <app-pie-chart title='Creator' [newData]="dataHeroes | transformData:'creatorLabel' "></app-pie-chart>
+      </th>
+      <td mat-cell *matCellDef="let row"> {{row.creatorLabel}} </td>
+    </ng-container>
+
+    <!-- Gender Column -->
+    <ng-container matColumnDef="genderLabel">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        <app-pie-chart-gender title='Gender' [newData]="dataHeroes | transformData:'genderLabel' "
+        ></app-pie-chart-gender>
+        </th>
+      <td mat-cell *matCellDef="let row"> {{row.genderLabel}} </td>
+    </ng-container>
+
+    <!-- NameLabel Column -->
+    <ng-container matColumnDef="nameLabel">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+       <app-bar-chart-name [data]="dataHeroes | transformData:'nameLabel' " title='Name'></app-bar-chart-name>
+      </th>
+      <td mat-cell *matCellDef="let row"> {{row.nameLabel}} </td>
+    </ng-container>
+
+    <!-- Occupation Column -->
+    <ng-container matColumnDef="occupationLabel">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        <app-bar-chart-occupation [data]="dataHeroes | transformData:'occupationLabel' "title='Occupation'></app-bar-chart-occupation>
+       </th>
+      <td mat-cell *matCellDef="let row"> {{row.occupationLabel}} </td>
+    </ng-container>
+
+    <!-- Skills Column -->
+    <ng-container matColumnDef="skillsLabel">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+         <app-bar-chart-skills [data]="dataHeroes | transformData:'citizenshipLabel' " title='Skills'></app-bar-chart-skills>
+        </th>
+      <td mat-cell *matCellDef="let row"> {{row.skillsLabel}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr
+      mat-row
+      (click)="openDialog(row)"
+      class="element-row"
+      *matRowDef="let row; columns: displayedColumns;"
+      ></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+</div>

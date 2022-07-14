@@ -1,0 +1,57 @@
+<div *ngIf="!isEditing else editTemplate">
+  <h1>Name : {{hero.nameLabel}}</h1>
+  <h2>Occupation: {{hero.occupationLabel}}</h2>
+  <p>Skills: {{hero.skillsLabel}}</p>
+  <p>Nationality: {{hero.citizenshipLabel}}</p>
+  <p>Creator: {{hero.creatorLabel}}</p>
+  <p>Gender: {{hero.genderLabel}}</p>
+  <p>Member of : {{hero.memberOfLabel}}</p>
+  <div fxLayout="row" fxLayoutGap="40px">
+    <button mat-raised-button color="primary" (click)="updateHero(hero)">Update</button>
+    <button mat-raised-button color="warn" (click)="deleteHero()">Delete</button>
+    <button mat-raised-button color="accent" (click)="cancelUpdateHero()">Cancel</button>
+  </div>
+</div>
+
+<ng-template #editTemplate>
+ <section>
+  <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" class="signUp_form" #form="ngForm"
+    (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="standard">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Name" [(ngModel)]="hero.nameLabel" name="name">
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Occupation</mat-label>
+      <input matInput placeholder="Name" [(ngModel)]="hero.occupationLabel" name="occupation">
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Skill</mat-label>
+      <input matInput placeholder="Name" [(ngModel)]="hero.skillsLabel" name="skill">
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Nationality</mat-label>
+      <input matInput placeholder="Name" [(ngModel)]="hero.citizenshipLabel" name="citizenship">
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Gender</mat-label>
+      <input matInput placeholder="Name" [(ngModel)]="hero.genderLabel" name="gender">
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Member</mat-label>
+      <input matInput placeholder="Name" [(ngModel)]="hero.memberOfLabel" name="member">
+    </mat-form-field>
+    <div fxLayout="row" fxLayoutGap="40px">
+      <button type="submit" mat-raised-button color="warn" gdGap="60px" [disabled]="form.invalid">Update</button>
+      <button
+      type="button"
+      mat-raised-button
+      color="primary"
+      (click)="cancelUpdateHero()"
+      >Cancel</button>
+    </div>
+  </form>
+ </section>
+</ng-template>
+
+
