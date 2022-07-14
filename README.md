@@ -1,8 +1,14 @@
 # MarvelDataTable
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
+## Make sure your run the serve to get the data
 
-## Development server
+Run `npm run serve` the serve will run in `http://localhost:3000/`
+
+## Don forget to install the dependencies
+
+Run `npm install`  or `yarn`
+
+## And then run tdev serve for client
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
