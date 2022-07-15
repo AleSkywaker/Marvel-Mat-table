@@ -49,7 +49,6 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.suscription = this.marvelDataService.__refreshData$.subscribe(() => {
-      console.log("refresh");
       this.marvelDataService.getHeroes().subscribe((data: Hero[]) => {
         this.dataSource = new MatTableDataSource<Hero>(data);
         this.sort.sort({ id: 'id', start: 'desc' } as MatSortable);
