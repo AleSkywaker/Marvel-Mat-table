@@ -1,16 +1,6 @@
 {
   "heros": [
     {
-      "id": "1",
-      "nameLabel": "Ahab",
-      "genderLabel": "male",
-      "citizenshipLabel": "United States of America",
-      "skillsLabel": "superhuman strength",
-      "occupationLabel": "psychologist",
-      "memberOfLabel": "Horsemen of Apocalypse",
-      "creatorLabel": "Walt Simonson"
-    },
-    {
       "id": "2",
       "nameLabel": "Anya Corazon",
       "genderLabel": "female",
@@ -481,14 +471,24 @@
       "creatorLabel": "Len Wein"
     },
     {
-      "citizenshipLabel": "Brazil",
-      "creatorLabel": "Alex",
-      "memberOfLabel": "Colony",
-      "nameLabel": "Sky",
+      "citizenshipLabel": "Española",
+      "creatorLabel": "Andrea",
+      "memberOfLabel": "Tribu",
+      "nameLabel": "Sky 33333",
       "occupationLabel": "Pilot",
       "skillsLabel": "Magic",
-      "genderLabel": "male",
-      "id": 49
+      "genderLabel": "female",
+      "id": 50
+    },
+    {
+      "citizenshipLabel": "Española",
+      "creatorLabel": "Andrea 2",
+      "memberOfLabel": "Tribu",
+      "nameLabel": "lol",
+      "occupationLabel": "Scientist",
+      "skillsLabel": "dddd",
+      "genderLabel": "female",
+      "id": 51
     }
   ]
 }
