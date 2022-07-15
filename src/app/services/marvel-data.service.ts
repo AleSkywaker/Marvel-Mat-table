@@ -8,9 +8,9 @@ import { Hero } from './marvel-data.interface';
 })
 export class MarvelDataService {
   private __URL = 'http://localhost:3000/heros/';
-  private dataSource = new BehaviorSubject<any>({});
-  $data = this.dataSource.asObservable();
   public __refreshData$ = new Subject<void>();
+  private __dataSource = new BehaviorSubject<any>({});
+  $data = this.__dataSource.asObservable();
 
   constructor(private http: HttpClient) {}
 
@@ -19,7 +19,7 @@ export class MarvelDataService {
       map((data) => {
         return data.map((item) => {
           const heroData =  { ...item};
-          this.dataSource.next(heroData);
+          this.__dataSource.next(heroData);
           return heroData;
         });
       })
