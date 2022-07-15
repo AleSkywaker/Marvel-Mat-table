@@ -6,8 +6,8 @@
 
 I just upload the first aproach on time (5 working days)
 everything is working as requested...
-This It is a MPV (minimun product viable)...
-Now If I have a spare time I will cleanUp de code and push the refactors.
+...This It is a MPV (minimun product viable)...
+...Now If I have a spare time I will cleanUp de code and push the refactors.
 
 ## Make sure your run the serve to get the data
 
