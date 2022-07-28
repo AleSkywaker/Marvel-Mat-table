@@ -7,45 +7,45 @@ import { Hero } from './marvel-data.interface';
   providedIn: 'root',
 })
 export class MarvelDataService {
-  private __URL = 'http://localhost:3000/heros/';
-  public __refreshData$ = new Subject<void>();
-  private __dataSource = new BehaviorSubject<any>({});
-  $data = this.__dataSource.asObservable();
+  URL = 'http://localhost:3000/heros/';
+  refreshData$ = new Subject<void>();
+  dataSource = new BehaviorSubject<any>({});
+  $data = this.dataSource.asObservable();
 
   constructor(private http: HttpClient) {}
 
   getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.__URL).pipe(
+    return this.http.get<Hero[]>(this.URL).pipe(
       map((data) => {
         return data.map((item) => {
           const heroData =  { ...item};
-          this.__dataSource.next(heroData);
+          this.dataSource.next(heroData);
           return heroData;
         });
-      })
+      }),
     );
   }
 
   createHero(hero: Hero): Observable<Hero> {
-    return this.http.post<Hero>(this.__URL, hero).pipe(
+    return this.http.post<Hero>(this.URL, hero).pipe(
       tap(()=>{
-        this.__refreshData$.next();
+        this.refreshData$.next();
       })
     );
   }
 
   deleteHero(hero: Hero) {
-    return this.http.delete(this.__URL + hero.id).pipe(
+    return this.http.delete(this.URL + hero.id).pipe(
       tap(() => {
-        this.__refreshData$.next();
+        this.refreshData$.next();
       })
     );
   }
 
   updateHero(hero: Hero) {
-    return this.http.put(this.__URL + hero.id, hero).pipe(
+    return this.http.put(this.URL + hero.id, hero).pipe(
       tap(() => {
-        this.__refreshData$.next();
+        this.refreshData$.next();
       })
     );
   }

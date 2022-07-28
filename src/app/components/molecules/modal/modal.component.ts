@@ -29,7 +29,6 @@ export class ModalComponent implements OnInit {
 
   deleteHero() {
     this.marvelDataService.deleteHero(this.hero).subscribe(() => {
-      console.log('deleted');
       this.marvelDataService.getHeroes();
       this.dialog.closeAll();
       this.toastr.warning('hero deleted!');
@@ -47,7 +46,7 @@ export class ModalComponent implements OnInit {
   onSubmit() {
     this.marvelDataService.updateHero(this.hero).subscribe(() => {
       this.toastr.info('hero updated!');
+      this.dialog.closeAll();
     });
-    this.dialog.closeAll();
   }
 }

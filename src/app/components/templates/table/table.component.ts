@@ -7,7 +7,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../../molecules/modal/modal.component';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 
 export interface Heroe {
   name: string;
@@ -35,6 +35,7 @@ export class TableComponent implements OnInit {
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   nationalitiesData: BarChartData[] = [];
   suscription!: Subscription;
+  $heros: Observable<Hero[]> = this.marvelDataService.$data;
 
   constructor(
     private marvelDataService: MarvelDataService,
@@ -48,7 +49,7 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.suscription = this.marvelDataService.__refreshData$.subscribe(() => {
+    this.suscription = this.marvelDataService.refreshData$.subscribe(() => {
       this.marvelDataService.getHeroes().subscribe((data: Hero[]) => {
         this.dataSource = new MatTableDataSource<Hero>(data);
         this.sort.sort({ id: 'id', start: 'desc' } as MatSortable);
@@ -65,10 +66,6 @@ export class TableComponent implements OnInit {
     });
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
